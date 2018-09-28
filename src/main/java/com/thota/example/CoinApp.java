@@ -15,27 +15,28 @@ public class CoinApp
         Scanner reader = new Scanner(System.in);  // Reading from System.in
         System.out.println("Enter amount : ");
         try {
-            int amount = reader.nextInt();
+            double amount = reader.nextDouble();
             while (amount > 0) {
                 Map<String, Integer> denomMap = coinExchange.exchangeCoinsForAmount(amount);
                 if (denomMap == null) {
                     System.out.println(" There are not enough coins to dispense the change, exiting the system");
                     System.exit(0);
                 } else {
-                    System.out.printf("Coin Exchange For Amount $%d ==> %s ", amount, denomMap.entrySet()
+                    System.out.printf("Coin Exchange For Amount $%s ==> %s ", amount, denomMap.entrySet()
                             .stream()
+                            //.filter()
                             .map(Object::toString)
                             .collect(joining(" & ")));
                     System.out.println();
                 }
                 reader = new Scanner(System.in);  // Reading from System.in
                 System.out.println("Enter amount : ");
-                amount = reader.nextInt();
+                amount = reader.nextDouble();
 
             }
         }catch (InputMismatchException ne) {
-            System.out.println("Enter only whole amount, ex: 10, 15,22");
-            System.exit(-1);
+            System.out.println("Enter only whole amount, ex: 10, 15, 22");
+             System.exit(-1);
         } finally {
 
             reader.close();

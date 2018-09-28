@@ -24,6 +24,6 @@ public class CoinExchangeImplTest {
     public void testexchangeCoinsForAmountFor40Quarters() {
         Map<String, Integer> denomMap = coinExchange.exchangeCoinsForAmount(10);
 
-        assertTrue(40 == denomMap.get("QUARTER"));
+        assertTrue(1 == denomMap.get("QUARTER"));
     }
 }
